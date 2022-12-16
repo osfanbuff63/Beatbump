@@ -36,7 +36,7 @@ const config = {
 	}),
 
 	kit: {
-		adapter: vercel,
+		adapter: vercel(),
 
 		alias: {
 			$stores: path.resolve("./src/lib/stores"),
