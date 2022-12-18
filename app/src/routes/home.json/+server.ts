@@ -30,6 +30,7 @@ export const GET: RequestHandler = async ({ url }) => {
 					"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 Edg/95.0.1020.40,gzip(gfe)",
 			},
 		},
+		headers: null,
 		params: { browseId: ctoken === "" ? browseId : "" },
 		continuation: ctoken !== "" && {
 			ctoken,
@@ -50,17 +51,17 @@ export const GET: RequestHandler = async ({ url }) => {
 
 		return result;
 	}
-	const sectionListContinuation = data?.continuationContents?.sectionListContinuation;
-	const contents = sectionListContinuation?.contents;
+	const sectionListContinuation = data.continuationContents?.sectionListContinuation;
+	const contents = sectionListContinuation.contents;
 	const nextContinuationData = Array.isArray(sectionListContinuation?.continuations)
-		? sectionListContinuation?.continuations[0]?.nextContinuationData
+		? sectionListContinuation.continuations[0]?.nextContinuationData
 		: {};
 
-	let idx = contents.length;
-	while (--idx > -1) {
+	let idx = -1;
+	while (++idx < contents.length) {
 		const item = contents[idx];
 		if ("musicCarouselShelfRenderer" in item) {
-			carouselItems.unshift(parseCarousel(item));
+			carouselItems.push(parseCarousel(item));
 		}
 	}
 
@@ -73,26 +74,29 @@ export const GET: RequestHandler = async ({ url }) => {
 function baseResponse(data: Dict<any>, _visitorData: string) {
 	const carouselItems = [];
 	let headerThumbnail = [];
+
 	const sectionListRenderer =
 		data.contents?.singleColumnBrowseResultsRenderer?.tabs[0]?.tabRenderer?.content?.sectionListRenderer;
-	const _contents = sectionListRenderer?.contents || [];
+
+	const _contents = sectionListRenderer.contents || [];
 	const nextContinuationData = sectionListRenderer.continuations[0]?.nextContinuationData;
 	const length = _contents.length;
+
 	let idx = -1;
 	while (++idx < length) {
 		const item = _contents[idx] ?? {};
 		if ("musicCarouselShelfRenderer" in item) {
 			const carousel = parseCarousel(item);
-			carouselItems[idx] = carousel;
+			carouselItems.push(carousel);
 		}
 		if ("musicImmersiveCarouselShelfRenderer" in item) {
 			headerThumbnail =
 				item.musicImmersiveCarouselShelfRenderer.backgroundImage?.simpleVideoThumbnailRenderer?.thumbnail?.thumbnails ||
 				[];
-			carouselItems[idx] = parseCarousel(item);
+			carouselItems.push(parseCarousel(item));
 		}
 	}
-	// '';
+
 	return json({
 		carousels: carouselItems,
 		headerThumbnail,

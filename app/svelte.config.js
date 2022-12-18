@@ -1,5 +1,6 @@
 // /* eslint-disable no-undef */
 import adapterCfw from "@sveltejs/adapter-cloudflare-workers";
+import adapterCf from "@sveltejs/adapter-cloudflare";
 import vercel from "@sveltejs/adapter-vercel";
 import netlify from "@sveltejs/adapter-netlify";
 import node from "@sveltejs/adapter-node";
@@ -13,10 +14,11 @@ const dev = process.env["NODE_ENV"] === "development";
 const ENV_ADAPTER = process.env["BB_ADAPTER"] ?? "cloudflare-workers";
 
 const adapters = {
-	"cloudflare-workers": adapterCfw(),
+	"cloudflare-workers": adapterCfw({}),
+	cloudflare: adapterCf(),
 	vercel: vercel(),
 	netlify: netlify({ edge: false, split: false }),
-	node: node({"precompress":false}),
+	node: node({ precompress: false }),
 };
 
 const adapter = adapters[ENV_ADAPTER];
@@ -29,7 +31,6 @@ const config = {
 		scss: {
 			includePaths: ["src"],
 			prependData: '@use "./src/global/stylesheet/base/_variables.scss" as *;',
-			renderSync: true,
 			stripIndent: true,
 		},
 		postcss: { configFilePath: path.resolve("./postcss.config.cjs") },
