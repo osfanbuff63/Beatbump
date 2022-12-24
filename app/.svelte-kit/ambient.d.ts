@@ -32,11 +32,13 @@ declare module '$env/static/private' {
 	export const PORT: string;
 	export const SHELL: string;
 	export const npm_command: string;
+	export const LSCOLORS: string;
 	export const SESSION_MANAGER: string;
 	export const npm_config_userconfig: string;
 	export const COLORTERM: string;
 	export const XDG_CONFIG_DIRS: string;
 	export const npm_config_cache: string;
+	export const LESS: string;
 	export const XDG_SESSION_PATH: string;
 	export const NVM_INC: string;
 	export const XDG_MENU_PREFIX: string;
@@ -46,7 +48,6 @@ declare module '$env/static/private' {
 	export const DOTNET_ROOT: string;
 	export const LC_NAME: string;
 	export const SSH_AUTH_SOCK: string;
-	export const NODE_EXTRA_CA_CERTS: string;
 	export const COLOR: string;
 	export const npm_config_local_prefix: string;
 	export const DESKTOP_SESSION: string;
@@ -58,14 +59,13 @@ declare module '$env/static/private' {
 	export const GTK_MODULES: string;
 	export const XDG_SEAT: string;
 	export const PWD: string;
-	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
+	export const XDG_SESSION_DESKTOP: string;
 	export const QT_QPA_PLATFORMTHEME: string;
 	export const XDG_SESSION_TYPE: string;
 	export const PANEL_GDK_CORE_DEVICE_EVENTS: string;
 	export const PNPM_HOME: string;
 	export const npm_config_init_module: string;
-	export const _: string;
 	export const XAUTHORITY: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const XDG_GREETER_DATA_DIR: string;
@@ -73,8 +73,8 @@ declare module '$env/static/private' {
 	export const GDM_LANG: string;
 	export const GTK2_RC_FILES: string;
 	export const HOME: string;
-	export const LANG: string;
 	export const LC_PAPER: string;
+	export const LANG: string;
 	export const LS_COLORS: string;
 	export const XDG_CURRENT_DESKTOP: string;
 	export const npm_package_version: string;
@@ -87,9 +87,10 @@ declare module '$env/static/private' {
 	export const NVM_DIR: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const XDG_SESSION_CLASS: string;
-	export const LC_IDENTIFICATION: string;
 	export const TERM: string;
+	export const LC_IDENTIFICATION: string;
 	export const npm_package_name: string;
+	export const ZSH: string;
 	export const npm_config_prefix: string;
 	export const USER: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
@@ -97,6 +98,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const SHLVL: string;
 	export const NVM_CD_FLAGS: string;
+	export const PAGER: string;
 	export const LC_TELEPHONE: string;
 	export const LC_MEASUREMENT: string;
 	export const XDG_VTNR: string;
@@ -108,6 +110,7 @@ declare module '$env/static/private' {
 	export const DEBUGINFOD_URLS: string;
 	export const npm_package_json: string;
 	export const LC_TIME: string;
+	export const P9K_SSH: string;
 	export const npm_config_legacy_peer_deps: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const QT_AUTO_SCREEN_SCALE_FACTOR: string;
@@ -122,12 +125,14 @@ declare module '$env/static/private' {
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const npm_config_global_prefix: string;
-	export const MAIL: string;
 	export const NVM_BIN: string;
+	export const MAIL: string;
 	export const npm_node_execpath: string;
 	export const npm_config_engine_strict: string;
 	export const LC_NUMERIC: string;
+	export const OLDPWD: string;
 	export const TERM_PROGRAM: string;
+	export const _: string;
 	export const NODE_ENV: string;
 }
 
@@ -164,11 +169,13 @@ declare module '$env/dynamic/private' {
 		PORT: string;
 		SHELL: string;
 		npm_command: string;
+		LSCOLORS: string;
 		SESSION_MANAGER: string;
 		npm_config_userconfig: string;
 		COLORTERM: string;
 		XDG_CONFIG_DIRS: string;
 		npm_config_cache: string;
+		LESS: string;
 		XDG_SESSION_PATH: string;
 		NVM_INC: string;
 		XDG_MENU_PREFIX: string;
@@ -178,7 +185,6 @@ declare module '$env/dynamic/private' {
 		DOTNET_ROOT: string;
 		LC_NAME: string;
 		SSH_AUTH_SOCK: string;
-		NODE_EXTRA_CA_CERTS: string;
 		COLOR: string;
 		npm_config_local_prefix: string;
 		DESKTOP_SESSION: string;
@@ -190,14 +196,13 @@ declare module '$env/dynamic/private' {
 		GTK_MODULES: string;
 		XDG_SEAT: string;
 		PWD: string;
-		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
+		XDG_SESSION_DESKTOP: string;
 		QT_QPA_PLATFORMTHEME: string;
 		XDG_SESSION_TYPE: string;
 		PANEL_GDK_CORE_DEVICE_EVENTS: string;
 		PNPM_HOME: string;
 		npm_config_init_module: string;
-		_: string;
 		XAUTHORITY: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		XDG_GREETER_DATA_DIR: string;
@@ -205,8 +210,8 @@ declare module '$env/dynamic/private' {
 		GDM_LANG: string;
 		GTK2_RC_FILES: string;
 		HOME: string;
-		LANG: string;
 		LC_PAPER: string;
+		LANG: string;
 		LS_COLORS: string;
 		XDG_CURRENT_DESKTOP: string;
 		npm_package_version: string;
@@ -219,9 +224,10 @@ declare module '$env/dynamic/private' {
 		NVM_DIR: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		XDG_SESSION_CLASS: string;
-		LC_IDENTIFICATION: string;
 		TERM: string;
+		LC_IDENTIFICATION: string;
 		npm_package_name: string;
+		ZSH: string;
 		npm_config_prefix: string;
 		USER: string;
 		VSCODE_GIT_IPC_HANDLE: string;
@@ -229,6 +235,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		SHLVL: string;
 		NVM_CD_FLAGS: string;
+		PAGER: string;
 		LC_TELEPHONE: string;
 		LC_MEASUREMENT: string;
 		XDG_VTNR: string;
@@ -240,6 +247,7 @@ declare module '$env/dynamic/private' {
 		DEBUGINFOD_URLS: string;
 		npm_package_json: string;
 		LC_TIME: string;
+		P9K_SSH: string;
 		npm_config_legacy_peer_deps: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		QT_AUTO_SCREEN_SCALE_FACTOR: string;
@@ -254,12 +262,14 @@ declare module '$env/dynamic/private' {
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		npm_config_global_prefix: string;
-		MAIL: string;
 		NVM_BIN: string;
+		MAIL: string;
 		npm_node_execpath: string;
 		npm_config_engine_strict: string;
 		LC_NUMERIC: string;
+		OLDPWD: string;
 		TERM_PROGRAM: string;
+		_: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: string]: string | undefined;
