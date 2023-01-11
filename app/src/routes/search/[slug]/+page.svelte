@@ -2,21 +2,17 @@
 	import type { PageData } from "./$types";
 
 	import { page } from "$app/stores";
-	import { afterNavigate, goto, invalidate } from "$app/navigation";
+	import { afterNavigate } from "$app/navigation";
 	import Listing from "$components/Item/Listing.svelte";
-	import type { Item, NextContinuationData } from "$lib/types";
+	import type { Item } from "$lib/types";
 	import VirtualList from "$lib/components/SearchList/VirtualList.svelte";
 
 	import Header from "$lib/components/Layouts/Header.svelte";
 
 	import { writable } from "svelte/store";
-	import type { MusicShelf } from "$lib/types/musicShelf";
 
 	export let data: PageData;
-	$: data = data;
 	let { results, continuation, filter } = data;
-	$: filter = filter;
-	$: results = results;
 	const search = writable<Item[]>();
 	$: results && filter !== "all" && search.set(results[0].contents);
 	let ctoken = continuation?.continuation;
@@ -58,7 +54,6 @@
 			filter = data.filter;
 			ctoken = data?.continuation?.continuation;
 			itct = data?.continuation?.clickTrackingParams;
-			// await invalidate();
 		}
 	});
 </script>
@@ -104,6 +99,7 @@
 					{#if result.contents.length !== 1}
 						<div class="show-more">
 							<a
+								data-testid=""
 								href={`${$page.params.slug}?filter=${result.header.title.replace(/\s/g, "_").toLowerCase()}`}
 								class="link secondary">Show All</a
 							>

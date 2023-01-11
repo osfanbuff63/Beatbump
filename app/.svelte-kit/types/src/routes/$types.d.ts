@@ -9,7 +9,7 @@ type OutputDataShape<T> = MaybeWithVoid<Omit<App.PageData, RequiredKeys<T>> & Pa
 type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 type PageParentData = EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/" | "/artist/[slug]" | "/artist/releases" | "/explore" | "/explore/[slug]" | "/home" | "/library" | "/library/playlists" | "/library/playlists/[slug]" | "/library/songs" | "/listen" | "/playlist/[slug]" | "/release" | "/search/[slug]" | "/session" | "/settings" | "/test" | "/trending" | "/trending/new/[slug]" | null
+type LayoutRouteId = RouteId | "/" | "/artist/[slug]" | "/artist/[slug]/releases" | "/explore" | "/explore/[slug]" | "/home" | "/library" | "/library/playlists" | "/library/playlists/[slug]" | "/library/songs" | "/listen" | "/playlist/[slug]" | "/release" | "/search/[slug]" | "/session" | "/settings" | "/test" | "/trending" | "/trending/new/[slug]" | null
 type LayoutParams = RouteParams & { slug?: string }
 type LayoutServerParentData = EnsureDefined<{}>;
 type LayoutParentData = EnsureDefined<{}>;
@@ -23,5 +23,5 @@ export type LayoutServerLoadEvent = Parameters<LayoutServerLoad>[0];
 export type LayoutServerData = Expand<OptionalUnion<EnsureDefined<Kit.AwaitedProperties<Awaited<ReturnType<typeof import('./proxy+layout.server.js').load>>>>>>;
 export type LayoutLoad<OutputData extends OutputDataShape<LayoutParentData> = OutputDataShape<LayoutParentData>> = Kit.Load<LayoutParams, LayoutServerData, LayoutParentData, OutputData, LayoutRouteId>;
 export type LayoutLoadEvent = Parameters<LayoutLoad>[0];
-export type LayoutData = Expand<Omit<LayoutParentData, keyof Kit.AwaitedProperties<Awaited<ReturnType<typeof import('./proxy+layout.js').load>>>> & OptionalUnion<EnsureDefined<Kit.AwaitedProperties<Awaited<ReturnType<typeof import('./proxy+layout.js').load>>>>>>;
+export type LayoutData = Expand<Omit<LayoutParentData, keyof LayoutParentData & EnsureDefined<LayoutServerData>> & OptionalUnion<EnsureDefined<LayoutParentData & EnsureDefined<LayoutServerData>>>>;
 export type RequestEvent = Kit.RequestEvent<RouteParams, RouteId>;
