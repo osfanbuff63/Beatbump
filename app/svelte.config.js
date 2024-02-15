@@ -1,9 +1,9 @@
 // /* eslint-disable no-undef */
-import adapterCfw from "@sveltejs/adapter-cloudflare-workers";
-import adapterCf from "@sveltejs/adapter-cloudflare";
-import vercel from "@sveltejs/adapter-vercel";
-import netlify from "@sveltejs/adapter-netlify";
-import node from "@sveltejs/adapter-node";
+// import adapterCfw from "@sveltejs/adapter-cloudflare-workers";
+import adapter from "@sveltejs/adapter-cloudflare";
+// import vercel from "@sveltejs/adapter-vercel";
+// import netlify from "@sveltejs/adapter-netlify";
+// import node from "@sveltejs/adapter-node";
 import path from "path";
 import sveltePreprocess from "svelte-preprocess";
 import dotenv from "dotenv";
@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const dev = process.env["NODE_ENV"] === "development";
-const ENV_ADAPTER = process.env["BB_ADAPTER"] ?? "cloudflare-workers";
+/* const ENV_ADAPTER = process.env["BB_ADAPTER"] ?? "cloudflare-workers";
 
 const adapters = {
 	"cloudflare-workers": adapterCfw({}),
@@ -21,7 +21,7 @@ const adapters = {
 	node: node({ precompress: true }),
 };
 
-const adapter = adapters[cloudflare];
+ const adapter = adapters[cloudflare]; */
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -37,7 +37,7 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapterCf(),
+		adapter: adapter(),
 
 		alias: {
 			$stores: path.resolve("./src/lib/stores"),
