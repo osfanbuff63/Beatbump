@@ -21,7 +21,7 @@ const adapters = {
 	node: node({ precompress: true }),
 };
 
-const adapter = adapters[ENV_ADAPTER];
+const adapter = adapters[cloudflare];
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -37,7 +37,7 @@ const config = {
 	}),
 
 	kit: {
-		adapter: vercel(),
+		adapter: adapterCf(),
 
 		alias: {
 			$stores: path.resolve("./src/lib/stores"),
